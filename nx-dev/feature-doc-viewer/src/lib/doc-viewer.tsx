@@ -1,16 +1,16 @@
 import { DocumentData } from '@nrwl/nx-dev/models-document';
 import { Menu } from '@nrwl/nx-dev/models-menu';
-import { Sidebar } from '@nrwl/nx-dev/ui-common';
-import cx from 'classnames';
+import { Breadcrumbs, Footer } from '@nrwl/nx-dev/ui-common';
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
+import { SidebarContainer } from '../../../ui-common/src/lib/sidebar-container';
 import { Content } from './content';
 
 export interface DocumentationFeatureDocViewerProps {
   menu: Menu;
   document: DocumentData;
   toc: any;
-  navIsOpen?: boolean;
+  navIsOpen: boolean;
 }
 
 export function DocViewer({
@@ -51,19 +51,20 @@ export function DocViewer({
           type: 'website',
         }}
       />
-      <div className="mx-auto w-full max-w-screen-lg">
-        <div className="lg:flex">
-          <Sidebar menu={menu} navIsOpen={navIsOpen} />
-          <div
-            id="content-wrapper"
-            className={cx(
-              'w-full min-w-0 flex-auto flex-col pt-16 md:pl-4 lg:static lg:max-h-full lg:overflow-visible',
-              navIsOpen && 'fixed max-h-screen overflow-hidden'
-            )}
-          >
+      <SidebarContainer menu={menu} navIsOpen={navIsOpen} />
+      <div
+        id="wrapper"
+        data-testid="wrapper"
+        className="flex flex-grow flex-col items-stretch justify-start overflow-y-scroll"
+      >
+        <div className="mx-auto w-full grow items-stretch px-4 sm:px-6 lg:px-8 2xl:max-w-6xl">
+          <div id="content-wrapper" className="w-full flex-auto flex-col">
+            <div className="mb-6 pt-8">
+              <Breadcrumbs path={router.asPath} />
+            </div>
             <Content document={document} />
-            <div className="flex w-full items-center space-x-2 px-4 pt-24 pb-24 sm:px-6 lg:pb-16 xl:px-8">
-              <div className="ml-4 flex h-0.5 w-full flex-grow rounded bg-slate-50" />
+            <div className="flex w-full items-center space-x-2 pt-24 pb-24 sm:px-6 lg:pb-16 xl:px-8">
+              <div className="ml-4 flex h-0.5 w-full flex-grow rounded bg-slate-50 dark:bg-slate-800/60" />
               <div className="relative z-0 inline-flex flex-shrink-0 rounded-md shadow-sm">
                 <a
                   aria-hidden="true"
@@ -71,7 +72,7 @@ export function DocViewer({
                   target="_blank"
                   rel="noreferrer"
                   title="Report an issue on Github"
-                  className="focus:ring-blue-nx-base focus:border-blue-nx-base relative inline-flex items-center rounded-l-md border border-gray-200 bg-white px-4 py-2 text-xs font-medium text-gray-600 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1"
+                  className="focus:ring-blue-nx-base focus:border-blue-nx-base relative inline-flex items-center rounded-l-md border border-slate-200 bg-white px-4 py-2 text-xs font-medium text-gray-600 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 dark:border-slate-700 dark:bg-slate-800/60 dark:text-slate-400 dark:hover:bg-slate-800"
                 >
                   Report an issue
                 </a>
@@ -87,7 +88,7 @@ export function DocViewer({
                   target="_blank"
                   rel="noreferrer"
                   title="Edit this page on Github"
-                  className="focus:ring-blue-nx-base focus:border-blue-nx-base relative -ml-px inline-flex items-center rounded-r-md border border-gray-200 bg-white px-4 py-2 text-xs font-medium text-gray-600 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1"
+                  className="focus:ring-blue-nx-base focus:border-blue-nx-base relative -ml-px inline-flex items-center rounded-r-md border border-slate-200 bg-white px-4 py-2 text-xs font-medium text-slate-600 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 dark:border-slate-700 dark:bg-slate-800/60 dark:text-slate-400 dark:hover:bg-slate-800"
                 >
                   Edit this page
                 </a>
@@ -95,6 +96,7 @@ export function DocViewer({
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     </>
   );

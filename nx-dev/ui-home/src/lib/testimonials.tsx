@@ -21,15 +21,26 @@ export function Testimonials(): JSX.Element {
         "A year ago I used Nx for my Angular stuff, now it's a core piece of everything I build.",
       ].join(' '),
     },
-    {
-      link: 'https://twitter.com/241Dev/status/1487531051484278791',
-      title: 'Web Engineer',
-      author: 'Akira Tsuboi',
-      imageUrl: '/images/testimonials/akira-tsuboi.jpg',
-      content: 'I just started using Nx (@NxDevTools). It’s awesome 😍',
-    },
   ];
   const column2 = [
+    {
+      author: 'Tomek Sułkowski',
+      content:
+        "Supporting @NxDevTools was an exciting goal for @StackBlitz: it's a remarkably elegant setup – but also a great test for WebContainers' maturity, so we're so happy to have reached this milestone!",
+      imageUrl: '/images/testimonials/tomek-sulkowski.jpg',
+      link: 'https://twitter.com/sulco/status/1455207019942748162',
+      title: '@StackBlitz Founding Engineer & DevRel',
+    },
+    {
+      author: 'Michael Bromley',
+      content:
+        'Just set up a full-stack Angular/NestJS app with @NxDevTools. One command, about 5 minutes, and a working full-stack "hello world". Probably just saved about 2 hours.',
+      imageUrl: '/images/testimonials/michael-bromley.jpg',
+      link: 'https://twitter.com/i/web/status/1403437555769561090',
+      title: 'Creator of @vendure_io',
+    },
+  ];
+  const column3 = [
     {
       author: 'Kent C. Dodds',
       content: 'Wow, @NxDevTools is no joke. This is awesome!',
@@ -53,47 +64,55 @@ export function Testimonials(): JSX.Element {
       link: 'https://twitter.com/93alan/status/1488825290973405184',
       title: 'Senior React Dev/Mobile Team Lead @Idox',
     },
-  ];
-  const column3 = [
     {
-      author: 'Tomek Sułkowski',
-      content:
-        "Supporting @NxDevTools was an exciting goal for @StackBlitz: it's a remarkably elegant setup – but also a great test for WebContainers' maturity, so we're so happy to have reached this milestone!",
-      imageUrl: '/images/testimonials/tomek-sulkowski.jpg',
-      link: 'https://twitter.com/sulco/status/1455207019942748162',
-      title: '@StackBlitz Founding Engineer & DevRel',
-    },
-    {
-      author: 'Michael Bromley',
-      content:
-        'Just set up a full-stack Angular/NestJS app with @NxDevTools. One command, about 5 minutes, and a working full-stack "hello world". Probably just saved about 2 hours.',
-      imageUrl: '/images/testimonials/michael-bromley.jpg',
-      link: 'https://twitter.com/i/web/status/1403437555769561090',
-      title: 'Creator of @vendure_io',
+      link: 'https://twitter.com/241Dev/status/1487531051484278791',
+      title: 'Web Engineer',
+      author: 'Akira Tsuboi',
+      imageUrl: '/images/testimonials/akira-tsuboi.jpg',
+      content: 'I just started using Nx (@NxDevTools). It’s awesome 😍',
     },
   ];
 
   return (
-    <div id="testimonials-tweets">
-      <div className="flex p-4 lg:mx-auto lg:max-w-7xl">
-        <div className="grid w-full grid-cols-1 items-start gap-12 md:grid-cols-2 lg:grid-cols-3">
-          <div className="flex w-full flex-col space-y-8">
-            {column1.map((data) => (
-              <TestimonialCard key={data.author} data={data} />
-            ))}
+    <article
+      id="next-generation"
+      className="relative bg-gray-50 pt-28 dark:bg-slate-800/40"
+    >
+      <div className="mx-auto max-w-7xl py-12 px-4 sm:grid sm:grid-cols-3 sm:gap-8 sm:px-6 lg:py-16 lg:px-8">
+        <div className="col-span-2">
+          <header>
+            <h1 className="text-lg font-semibold tracking-tight text-blue-500 dark:text-sky-500">
+              They use Nx every day
+            </h1>
+            <p className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 sm:text-5xl">
+              Devs & CEOs, Startups & big companies are loving Nx
+            </p>
+          </header>
+          <div className="mt-8 flex gap-16 font-normal">
+            <p className="max-w-xl text-lg text-slate-700 dark:text-slate-400">
+              Here is what they say about Nx, what they like about it, how it
+              transforms their developer life and what you are missing out on!
+            </p>
           </div>
-          <div className="flex w-full flex-col space-y-8">
-            {column2.map((data) => (
-              <TestimonialCard key={data.author} data={data} />
-            ))}
-          </div>
-          <div className="flex w-full flex-col space-y-8">
-            {column3.map((data) => (
-              <TestimonialCard key={data.author} data={data} />
-            ))}
+          <div className="mt-12 grid grid-cols-2 gap-8">
+            <div className="space-y-6">
+              {column1.map((data) => (
+                <TestimonialCard key={data.author} data={data} />
+              ))}
+            </div>
+            <div className="space-y-6">
+              {column2.map((data) => (
+                <TestimonialCard key={data.author} data={data} />
+              ))}
+            </div>
           </div>
         </div>
+        <div className="flex h-full w-full flex-col items-start gap-6">
+          {column3.map((data) => (
+            <TestimonialCard key={data.author} data={data} />
+          ))}
+        </div>
       </div>
-    </div>
+    </article>
   );
 }
