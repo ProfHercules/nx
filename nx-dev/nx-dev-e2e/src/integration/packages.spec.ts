@@ -154,6 +154,35 @@ describe('nx-dev: Packages Section', () => {
     { title: '@nrwl/detox:test', path: '/packages/detox/executors/test' },
     { title: '@nrwl/devkit', path: '/packages/devkit' },
     { title: '@nrwl/eslint-plugin-nx', path: '/packages/eslint-plugin-nx' },
+    { title: '@nrwl/expo', path: '/packages/expo' },
+    {
+      title: '@nrwl/expo:init',
+      path: '/packages/expo/generators/init',
+    },
+    {
+      title: '@nrwl/expo:application',
+      path: '/packages/expo/generators/application',
+    },
+    {
+      title: '@nrwl/expo:library',
+      path: '/packages/expo/generators/library',
+    },
+    {
+      title: '@nrwl/expo:component',
+      path: '/packages/expo/generators/component',
+    },
+    {
+      title: '@nrwl/expo:start',
+      path: '/packages/react-native/executors/start',
+    },
+    {
+      title: '@nrwl/expo:sync-deps',
+      path: '/packages/expo/executors/sync-deps',
+    },
+    {
+      title: '@nrwl/expo:ensure-symlink',
+      path: '/packages/expo/executors/ensure-symlink',
+    },
     { title: '@nrwl/express', path: '/packages/express' },
     { title: '@nrwl/express:init', path: '/packages/express/generators/init' },
     {
